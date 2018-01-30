@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Customer Manager</title>
+    <link href="Content/angular-material.css" rel="stylesheet" />
+    <link href="Content/Style.css" rel="stylesheet" />
+    <base href="/" />
+</head>
+<body ng-app="customersApp" ng-cloak="">
+
+    <md-toolbar class="md-toolbar-tools">
+        <h2><a href="/customers">Customer Manager</a></h2>
+    </md-toolbar>
+    <ng-view>
+
+    </ng-view>
+
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-material/angular-material.js"></script>
+    <script src="Scripts/angular-aria.js"></script>
+    <script src="Scripts/angular-animate.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script src="app/app.js"></script>   
+    <script src="app/Controllers/controllers.js"></script>
+    <script src="Scripts/angular-ui-router.js"></script>
+    <script src="app/Services/customerService.js"></script>
+    <script src="app/Services/productService.js"></script>
+
+</body>
+
+</html>

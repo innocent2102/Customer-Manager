@@ -1,0 +1,47 @@
+﻿<head>
+    <link href="Content/angular-material.css" rel="stylesheet" />
+    <link href="Content/Style.css" rel="stylesheet" />
+</head>
+<div>
+    <div>
+        <div>{{checkCustomerID(customerName)}}</div>
+        <div style="margin-left: 18px">
+            <div class="row">
+                <div class="span12">
+                    <div class="indent">
+                        <h3>{{ customers[id].firstName + ' ' + customers[id].lastName }}</h3>
+                        {{customers[id].address}}
+                        <br />
+                        {{customers[id].city}}
+                        <br />
+                    </div>
+                </div>
+                <br /><br />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="th-hover-mouse" ng-class="getSortClass('product')" ng-click="sortData('product')">Product</th>
+                            <th class="th-hover-mouse" ng-class="getSortClass('quantity')" ng-click="sortData('quantity')">Quantity</th>
+                            <th class="th-hover-mouse" ng-class="getSortClass('unitPrice')" ng-click="sortData('unitPrice')">Unit Price</th>
+                            <th class="th-hover-mouse" ng-class="getSortClass('total')" ng-click="sortData('total')">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="order in customers[id].orders | orderBy:sortColumn:reverseSort">                            
+                            <td>{{ order.product}}</td>
+                            <td>{{ order.quantity}}</td>
+                            <td>{{ order.unitPrice}}</td>
+                            <td>{{ order.quantity * order.unitPrice | number:2}}</td>
+                        </tr>
+                        <tr class="bold">
+                            <td>Summary</td>
+                            <td></td>
+                            <td></td>
+                            <td>{{ totalOrders(customers[id].orders) | number:2}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

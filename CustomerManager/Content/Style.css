@@ -1,0 +1,139 @@
+﻿body {
+}
+
+.inputCustomer {
+    margin-left: 14px;
+    margin-top: 23px;
+    height: 40px;
+}
+
+.tabContainer {
+    background-color: rgb(255,255,255)
+}
+
+.addCustomerBtn {
+    margin-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 25px;
+}
+
+.customerContainer {
+    float: left;
+}
+
+.content {
+    padding: 8px;
+    margin: 2px;
+}
+
+.mdCard {
+    height: 135px;
+    width: 250px;
+}
+
+.mdCardTitle {
+    padding: 12px 13px
+}
+
+.link {
+    text-decoration: none;
+    color: blue;
+    margin-top: 3px;
+}
+
+.mdCardTitleMedia {
+    margin-top: 4px;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    background-color: rgb(63,81,181);
+    color: rgba(255, 255, 255, 0.87);
+    width: 250px;
+}
+
+table, th, td {
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+.table tr:nth-child(even) {
+    background-color: #eee;
+}
+
+.table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.tableOrderPerson {
+    margin-bottom: 0px;
+}
+
+.input-order input {
+    padding-left: 5px !important;
+}
+
+.th-hover-mouse:hover {
+    cursor: pointer;
+}
+
+.table-container {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.input-bar {
+    margin-left: 18px;
+    margin-right: 10px;
+    margin-top: 25px;
+    margin-bottom 15px;
+}
+
+.input-border {
+    border: 1px solid lightgrey;
+    height: 50px;
+    width: 230px;
+}
+
+.quantity-input {
+    height: 42px;
+    border: 1px solid lightgrey;
+    margin-bottom: 8px;
+    border-bottom: 2px solid lightgrey;
+}
+
+.price-input {
+    border: 1px solid lightgrey;
+    width: 90px;
+    height: 42px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid lightgrey;
+    text-align: center;
+    line-height: 40px;
+}
+
+.addOrderBTN {
+    margin-bottom: 15px;
+    height: 41px;
+    margin-right: 25px;
+    float: right;
+    position: relative
+}
+
+.delete-icon {
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 90px;
+}

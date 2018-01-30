@@ -1,0 +1,102 @@
+﻿<div ng-controller="customersController">
+    <md-content>
+        <md-tabs md-dynamic-height md-border-bottom class="tabContainer">
+            <md-tab label="Customers">
+                <md-content style="padding-top:5px" class="md-padding">
+                    <div ng-include="'app/Includes/newCustomerForm.html'"></div>
+                    <div ng-repeat="customer in customers" class="customerContainer">
+                        <md-content class="content">
+                            <md-card class="mdCard">
+                                <md-card-title class="md-card mdCardTitle">
+                                    <md-card-title-text>
+                                        <span class="md-headline">{{ customer.firstName }} {{ customer.lastName }}</span>
+                                        <span class="md-subhead">{{ customer.address}}</span>
+                                        <span style="position: absolute; margin-top: 90px"><a href="/orders/{{customers.firstName}}" class="link"><span class="link">View {{ ordersCount(customer.orders)}} orders</span></a></span>
+                                        <span ng-click="removeCustomer(customer.firstName)" class="delete-icon"><img src="Content/img/ic_delete_18pt.png" /></span>
+                                    </md-card-title-text>
+                                    <md-card-title-media>
+                                        <img ng-src="{{imagePath}}" class="md-card-image mdCardTitleMedia" alt="Washed Out">
+                                    </md-card-title-media>
+                                </md-card-title>
+                            </md-card>
+                        </md-content>
+                    </div>
+                </md-content>
+            </md-tab>
+            <md-tab label="orders">
+                <div class="input-bar">
+                    <div class="layout layout-align-start-center inputCustomer">
+                        <md-content class="input-border">
+                            <md-autocomplete class="input-order"
+                                             md-selected-item-change="onCustomerChange(itemCustomer)"
+                                             md-selected-item="selecteditemCustomer"
+                                             md-search-text="searchTextCustomers"
+                                             md-search-text-change="searchTextChange(searchTextCustomers)"
+                                             md-items="itemCustomer in querySearch(searchTextCustomers)"
+                                             md-item-text="itemCustomer.firstName + ' ' + itemCustomer.lastName"
+                                             md-min-length="0"
+                                             placeholder="Customer">
+                                <md-item-template>
+                                    <span md-highlight-text="searchTextCustomers" md-highlight-flags="^i">{{itemCustomer.firstName}} {{itemCustomer.lastName}}</span>
+                                </md-item-template>
+                            </md-autocomplete>
+                        </md-content>
+                        <md-content class="input-border">
+                            <md-autocomplete md-selected-item-change="onProductChange(itemProduct)"
+                                             md-selected-item="selectedItemProduct"
+                                             md-search-text="searchTextProduct"
+                                             md-search-text-change="searchTextChange(searchTextProduct)"
+                                             md-items="itemProduct in querySearchProducts(searchTextProduct)"
+                                             md-item-text="itemProduct.name"
+                                             md-min-length="0"
+                                             placeholder="Product">
+                                <md-item-template>
+                                    <span md-highlight-text="searchTextProduct" md-highlight-flags="^i">{{itemProduct.name}}</span>
+                                </md-item-template>
+                            </md-autocomplete>
+                        </md-content>
+                        <input class="quantity-input" type="number" min="1" ng-model="newProduct.quantity" />
+                        <div class="price-input">
+                            <span ng-bind="newProduct.price * newProduct.quantity | number:2" />
+                        </div>
+                        <md-button ng-click="addOrder()" class="md-raised md-primary addOrderBTN">Add Order</md-button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <md-content style="padding-top: 0" class="md-padding">
+                        <div ng-repeat="customer in customers ">
+                            <h3 class="tableOrderPerson">
+                                {{ customer.firstName }}
+                                {{ customer.lastName }}
+                            </h3>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="th-hover-mouse" ng-class="getSortClass('product')" ng-click="sortData('product')">Product</th>
+                                        <th class="th-hover-mouse" ng-class="getSortClass('quantity')" ng-click="sortData('quantity')">Quantity</th>
+                                        <th class="th-hover-mouse" ng-class="getSortClass('unitPrice')" ng-click="sortData('unitPrice')">Unit Price</th>
+                                        <th class="th-hover-mouse" ng-class="getSortClass('total')" ng-click="sortData('total')">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="order in customer.orders | orderBy:sortColumn:reverseSort">
+                                        <td>{{ order.product}}</td>
+                                        <td>{{ order.quantity}}</td>
+                                        <td>{{ order.unitPrice}}</td>
+                                        <td>{{ order.quantity * order.unitPrice | number:2}}</td>
+                                    </tr>
+                                    <tr class="bold">
+                                        <td>Summary</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>{{ totalOrders(customer.orders) | number:2}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </md-content>
+                </div>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>

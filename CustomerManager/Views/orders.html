@@ -1,0 +1,37 @@
+﻿<div>
+    <div class="row">
+        <div class="span12">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="th-hover-mouse" ng-class="getSortClass('product')" ng-click="sortData('product')">Product</th>
+                        <th class="th-hover-mouse" ng-class="getSortClass('quantity')" ng-click="sortData('quantity')">Quantity</th>
+                        <th class="th-hover-mouse" ng-class="getSortClass('unitPrice')" ng-click="sortData('unitPrice')">Unit Price</th>
+                        <th class="th-hover-mouse" ng-class="getSortClass('total')" ng-click="sortData('total')">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-hide="customer.orders || customer.orders.length > 0" class="error">
+                        <td colspan="4">
+                            <div class="text-center"><strong>No orders found</strong></div>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="order in customer.orders | orderBy:sortColumn:reverseSort">
+                        <td>{{ order.product}}</td>
+                        <td>{{ order.quantity}}</td>
+                        <td>{{ order.unitPrice}}</td>
+                        <td>{{ order.quantity * order.unitPrice | number:2}}</td>
+                    </tr>
+                    <tr class="bold">
+                        <td>Summary</td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ totalOrders(customer.orders) | number:2}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

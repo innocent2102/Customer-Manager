@@ -1,0 +1,21 @@
+﻿<ng-form name="newCustomerForm">
+    <div class="layout layout-align-start-center inputCustomer">
+        <md-input-container>
+            <label>First Name</label>
+            <input ng-required="true" ng-model="newCustomer.firstName" />
+        </md-input-container>
+        <md-input-container>
+            <label>Last Name</label>
+            <input ng-required="true" ng-model="newCustomer.lastName" />
+        </md-input-container>
+        <md-input-container>
+            <label>City</label>
+            <input ng-required="true" ng-model="newCustomer.city" />
+        </md-input-container>
+        <md-input-container>
+            <label>Address</label>
+            <input ng-required="true" ng-model="newCustomer.address" />
+        </md-input-container>
+        <md-button ng-disabled="newCustomerForm.$invalid" ng-click="addCustomer()" class="md-raised md-primary addCustomerBtn">Add Customer</md-button>
+    </div>
+</ng-form>
